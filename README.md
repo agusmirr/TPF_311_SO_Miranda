@@ -38,7 +38,7 @@ Punto_A/
 │   └── Punto_A_Individual.sh
 └── Grupal/
     └── Punto_A_Grupal.sh
-
+```
 
 ## Punto A - Directorios
 
