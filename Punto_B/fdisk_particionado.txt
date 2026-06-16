@@ -1,0 +1,15 @@
+Disk /dev/sdc: 10 GiB, 10737418240 bytes, 20971520 sectors
+Disk model: HARDDISK        
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x5dd88156
+
+Device     Boot    Start      End  Sectors  Size Id Type
+/dev/sdc1           2048  2099199  2097152    1G 83 Linux
+/dev/sdc2        2099200  4196351  2097152    1G 83 Linux
+/dev/sdc3        4196352 20971519 16775168    8G  5 Extended
+/dev/sdc5        4198400  9789439  5591040  2.7G 83 Linux
+/dev/sdc6        9791488 15382527  5591040  2.7G 83 Linux
+/dev/sdc7       15384576 20971519  5586944  2.7G 83 Linux

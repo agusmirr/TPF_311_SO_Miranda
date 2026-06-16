@@ -1,0 +1,116 @@
+Creando particiones en /dev/sdc...
+
+Welcome to fdisk (util-linux 2.37.2).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+Device does not contain a recognized partition table.
+Created a new DOS disklabel with disk identifier 0x4da012e0.
+
+Command (m for help): Created a new DOS disklabel with disk identifier 0x5dd88156.
+
+Command (m for help): Partition type
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended (container for logical partitions)
+Select (default p): Partition number (1-4, default 1): First sector (2048-20971519, default 2048): Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-20971519, default 20971519): 
+Created a new partition 1 of type 'Linux' and of size 1 GiB.
+
+Command (m for help): Partition type
+   p   primary (1 primary, 0 extended, 3 free)
+   e   extended (container for logical partitions)
+Select (default p): Partition number (2-4, default 2): First sector (2099200-20971519, default 2099200): Last sector, +/-sectors or +/-size{K,M,G,T,P} (2099200-20971519, default 20971519): 
+Created a new partition 2 of type 'Linux' and of size 1 GiB.
+
+Command (m for help): Partition type
+   p   primary (2 primary, 0 extended, 2 free)
+   e   extended (container for logical partitions)
+Select (default p): Partition number (3,4, default 3): First sector (4196352-20971519, default 4196352): Last sector, +/-sectors or +/-size{K,M,G,T,P} (4196352-20971519, default 20971519): 
+Created a new partition 3 of type 'Extended' and of size 8 GiB.
+
+Command (m for help): All space for primary partitions is in use.
+Adding logical partition 5
+First sector (4198400-20971519, default 4198400): First sector (4198400-20971519, default 4198400): Last sector, +/-sectors or +/-size{K,M,G,T,P} (4198400-20971519, default 20971519): 
+Created a new partition 5 of type 'Linux' and of size 2.7 GiB.
+
+Command (m for help): All space for primary partitions is in use.
+Adding logical partition 6
+First sector (9791488-20971519, default 9791488): First sector (9791488-20971519, default 9791488): Last sector, +/-sectors or +/-size{K,M,G,T,P} (9791488-20971519, default 20971519): 
+Created a new partition 6 of type 'Linux' and of size 2.7 GiB.
+
+Command (m for help): All space for primary partitions is in use.
+Adding logical partition 7
+First sector (15384576-20971519, default 15384576): First sector (15384576-20971519, default 15384576): Last sector, +/-sectors or +/-size{K,M,G,T,P} (15384576-20971519, default 20971519): 
+Created a new partition 7 of type 'Linux' and of size 2.7 GiB.
+
+Command (m for help): The partition table has been altered.
+Calling ioctl() to re-read partition table.
+Syncing disks.
+
+Actualizando tabla de particiones...
+Formateando particiones en ext4...
+Creating filesystem with 262144 4k blocks and 65536 inodes
+Filesystem UUID: 39e25989-6b7c-477c-b7e5-824f77e59fcb
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376
+
+Allocating group tables: 0/8   done                            
+Writing inode tables: 0/8   done                            
+Creating journal (8192 blocks): done
+Writing superblocks and filesystem accounting information: 0/8   done
+
+Creating filesystem with 262144 4k blocks and 65536 inodes
+Filesystem UUID: 7172278f-cd99-4f62-b3fd-1081ce95743b
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376
+
+Allocating group tables: 0/8   done                            
+Writing inode tables: 0/8   done                            
+Creating journal (8192 blocks): done
+Writing superblocks and filesystem accounting information: 0/8   done
+
+Creating filesystem with 698880 4k blocks and 174944 inodes
+Filesystem UUID: 01a3c281-07e6-420c-8800-01198cbca842
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376, 294912
+
+Allocating group tables:  0/22     done                            
+Writing inode tables:  0/22     done                            
+Creating journal (16384 blocks): done
+Writing superblocks and filesystem accounting information:  0/22     done
+
+Creating filesystem with 698880 4k blocks and 174944 inodes
+Filesystem UUID: 7e86f0a2-15c6-43ef-acf7-7ce5638b596a
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376, 294912
+
+Allocating group tables:  0/22     done                            
+Writing inode tables:  0/22     done                            
+Creating journal (16384 blocks): done
+Writing superblocks and filesystem accounting information:  0/22     done
+
+Creating filesystem with 698368 4k blocks and 174592 inodes
+Filesystem UUID: bb09a128-a040-4e0e-880a-b60bb346f6ca
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376, 294912
+
+Allocating group tables:  0/22     done                            
+Writing inode tables:  0/22     done                            
+Creating journal (16384 blocks): done
+Writing superblocks and filesystem accounting information:  0/22     done
+
+Particionado y formateo finalizado.
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+loop0    7:0    0 63.8M  1 loop /snap/core20/2866
+loop1    7:1    0 91.7M  1 loop /snap/lxd/38800
+loop2    7:2    0 49.3M  1 loop /snap/snapd/26865
+sda      8:0    0   40G  0 disk 
+└─sda1   8:1    0   40G  0 part /
+sdb      8:16   0   10M  0 disk 
+sdc      8:32   0   10G  0 disk 
+├─sdc1   8:33   0    1G  0 part 
+├─sdc2   8:34   0    1G  0 part 
+├─sdc3   8:35   0    1K  0 part 
+├─sdc5   8:37   0  2.7G  0 part 
+├─sdc6   8:38   0  2.7G  0 part 
+└─sdc7   8:39   0  2.7G  0 part 
+sdd      8:48   0    2G  0 disk 
