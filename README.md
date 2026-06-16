@@ -88,7 +88,9 @@ Se creó la estructura colaborativa en /Continentes/, respetando la asignación 
 
 La estructura creada fue:
 
+La estructura creada fue:
 
+```text
 /Continentes/
 ├── America/
 │   ├── Mexico/
@@ -120,6 +122,7 @@ La estructura creada fue:
     │   └── Tokyo/
     └── Tailandia/
         └── Bangkok/
+```
 
 El script correspondiente se encuentra en:
 
@@ -127,7 +130,7 @@ El script correspondiente se encuentra en:
 
 Validación utilizada:
 
-	tree -a /Continentes
+`tree -a /Continentes`
 
 
 Se utilizaron archivos .gitkeep en los directorios hoja para evitar que quedaran directorios vacíos sin archivo asociado.
