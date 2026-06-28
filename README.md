@@ -9,6 +9,17 @@ UTN FRA — División 311 — 2026
 |--------|-----|
 | Karen Agustina Miranda | Sysadmin / Manager / Dev |
 
+## Metodología de trabajo
+
+Se utilizaron 3 máquinas virtuales independientes, una por cada rol:
+- **VMDiscos-sysadmin** → rol sysadmin
+- **VMDiscos-manager** → rol manager
+- **VMDiscos-dev** → rol dev
+
+Cada integrante realizó sus commits desde su propia VM, identificando
+el rol en cada mensaje de commit con el prefijo correspondiente
+(Sysadmin:, Manager:, Dev:).
+
 ## Índice
 
 - [Estructura del repositorio](#estructura-del-repositorio)
@@ -21,6 +32,8 @@ UTN FRA — División 311 — 2026
 ---
 
 ## Estructura del repositorio
+
+```
 
 TPF_311_SO_Miranda/
     ├── Ejercicios/
@@ -38,6 +51,9 @@ TPF_311_SO_Miranda/
             ├── America/
             ├── Europa/
             └── Asia/
+
+```
+
 ---
 
 ## Punto A — Estructura de Directorios
