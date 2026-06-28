@@ -28,7 +28,7 @@ el rol en cada mensaje de commit con el prefijo correspondiente
 - [Punto C — Usuarios y Grupos](#punto-c--usuarios-y-grupos)
 - [Punto D — Permisos](#punto-d--permisos)
 - [Punto E — Filtros Básicos](#punto-e--filtros-básicos)
-
+- [Punto F — Docker Compose](punto-f--docker-compose-opcional)
 ---
 
 ## Estructura del repositorio
@@ -136,3 +136,18 @@ Se usó `awk` para filtrar información específica de `/proc/meminfo` y `/proc/
 **Script:** [Punto_E.sh](Ejercicios/Punto_E/Punto_E.sh)  
 **Uso:** `bash Punto_E.sh`  
 **Evidencia:** [Filtro_basico.txt](Ejercicios/Punto_E/Filtro_basico.txt)
+
+---
+
+## Punto F — Docker Compose (opcional)
+
+Se desplegó un sitio WordPress usando Docker Compose con dos servicios conectados a la red interna `red_utn`.
+
+| Servicio | Imagen | Puerto |
+|----------|--------|--------|
+| wordpress | wordpress | 8080 |
+| db | mariadb | interno |
+
+**Archivo:** [docker-compose.yml](Ejercicios/Punto_F/docker-compose.yml)  
+**Evidencia:** [docker_output.txt](Ejercicios/Punto_F/docker_output.txt) | [wordpress.png](Ejercicios/Punto_F/wordpress.png)  
+**Levantar:** `docker-compose up -d` desde `Ejercicios/Punto_F/`
