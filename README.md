@@ -1,145 +1,122 @@
 # TPF_311_SO_Miranda
 
-Trabajo Práctico Final - Arquitectura y Sistemas Operativos  
-UTN FRA - División 311 - 2026
+**Trabajo Práctico Final — Arquitectura y Sistemas Operativos**  
+UTN FRA — División 311 — 2026
 
-## Alumna
+## Integrante
 
-- Nombre: Agustina Miranda
-- Modalidad de trabajo: individual
+| Nombre | Rol |
+|--------|-----|
+| Karen Agustina Miranda | Sysadmin / Manager / Dev |
 
-## Organización del trabajo
+## Índice
 
-El trabajo fue realizado de forma individual, utilizando tres máquinas virtuales distintas para representar los roles solicitados en la consigna.
+- [Estructura del repositorio](#estructura-del-repositorio)
+- [Punto A — Estructura de Directorios](#punto-a--estructura-de-directorios)
+- [Punto B — Particionamiento y Montaje](#punto-b--particionamiento-y-montaje)
+- [Punto C — Usuarios y Grupos](#punto-c--usuarios-y-grupos)
+- [Punto D — Permisos](#punto-d--permisos)
+- [Punto E — Filtros Básicos](#punto-e--filtros-básicos)
 
-Para realizarlo se utilizó como base la máquina virtual provista por el profesor: `1_equipo_con_mas_discos`.  
-A partir de esa VM se crearon copias separadas, modificando en cada una el `hostname`, el nombre de la máquina en VirtualBox y la IP privada, para poder distinguir los entornos de trabajo.
-
-| Rol | Máquina virtual | Hostname | IP |
-|---|---|---|---|
-| Sysadmin | VMDiscos-sysadmin | VMDiscos-sysadmin | 192.168.56.3 |
-| Manager | VMDiscos-manager | VMDiscos-manager | 192.168.56.4 |
-| Dev | VMDiscos-dev | VMDiscos-dev | 192.168.56.5 |
-
-Todas las contribuciones fueron subidas a un único repositorio de GitHub.  
-Para identificar el trabajo realizado por cada rol, los mensajes de commit comienzan con el rol correspondiente, siguiendo la indicación del profesor:
-
-- `Sysadmin: descripción del cambio`
-- `Manager: descripción del cambio`
-- `Dev: descripción del cambio`
+---
 
 ## Estructura del repositorio
 
-La estructura inicial del repositorio para el Punto A es:
+TPF_311_SO_Miranda/
+    ├── Ejercicios/
+    │   ├── Punto_A/    → scripts Punto A
+    │   ├── Punto_B/    → scripts y evidencias Punto B
+    │   ├── Punto_C/    → scripts y evidencias Punto C
+    │   ├── Punto_D/    → scripts y evidencias Punto D
+    │   └── Punto_E/    → scripts y evidencias Punto E
+    ├── Individual/
+    │   ├── sysadmin/
+    │   ├── manager/
+    │   └── dev/
+    └── Grupal/
+        └── Continentes/
+            ├── America/
+            ├── Europa/
+            └── Asia/
+---
 
-```text
-Punto_A/
-├── Individual/
-│   └── Punto_A_Individual.sh
-└── Grupal/
-    └── Punto_A_Grupal.sh
-```
+## Punto A — Estructura de Directorios
 
-## Punto A - Directorios
+### Parte Individual
+Cada rol ejecutó el script para crear su estructura de directorios en la VM.
 
-### Parte individual
+**Script:** [Punto_A_Individual.sh](Ejercicios/Punto_A/Punto_A_Individual.sh)  
+**Uso:** `bash Punto_A_Individual.sh <sysadmin|manager|dev>`  
+**Evidencia:** [Individual/](Individual/)
 
-Cada rol creó su estructura individual dentro del home de su maquina virtual correspondiente. 
+### Parte Grupal
+Cada rol creó su continente de forma colaborativa respetando el flujo Git (pull → commit → push).
 
-Estructuras creadas:
+| Rol | Continente |
+|-----|------------|
+| Sysadmin | América |
+| Manager | Europa |
+| Dev | Asia |
 
-/home/vagrant/sysadmin
-/home/vagrant/manager
-/home/vagrant/dev
+**Script:** [Punto_A_Grupal.sh](Ejercicios/Punto_A/Punto_A_Grupal.sh)  
+**Evidencia:** [Grupal/Continentes/](Grupal/Continentes/)
 
+---
 
-Cada una contiene la siguiente estructura:
+## Punto B — Particionamiento y Montaje
 
-<rol>/
-├── Monitoreo/
-│   ├── Alertas/
-│   ├── Logs/
-│   └── Metricas/
-└── Servicios/
-    ├── Base_de_Datos/
-    ├── Cache/
-    └── Web/
-El script correspondiente se encuentra en:
+Se utilizó el disco `/dev/sdc` (10GB) en cada VM para crear el siguiente esquema:
+- 2 particiones primarias de 1GB
+- 3 particiones lógicas de ~2.7GB cada una
+- Todas formateadas con ext4
 
-Punto_A/Individual/Punto_A_Individual.sh
+**IMPORTANTE:** Las particiones lógicas deben montarse ANTES que las primarias para evitar que estas tapen los puntos de montaje internos.
 
-Validaciones utilizadas:
+| Partición | Punto de montaje |
+|-----------|-----------------|
+| sdc1 | ~/<rol>/Servicios/ |
+| sdc2 | ~/<rol>/Monitoreo/ |
+| sdc5 | ~/<rol>/Servicios/Web/ |
+| sdc6 | ~/<rol>/Servicios/Cache/ |
+| sdc7 | ~/<rol>/Monitoreo/Logs/ |
 
+**Scripts:** [Ejercicios/Punto_B/](Ejercicios/Punto_B/)  
+- [Punto_B_Particiones.sh](Ejercicios/Punto_B/Punto_B_Particiones.sh) — ejecutar como sysadmin  
+- [Punto_B_FormatMontaje_sysadmin.sh](Ejercicios/Punto_B/Punto_B_FormatMontaje_sysadmin.sh)  
+- [Punto_B_FormatMontaje_manager.sh](Ejercicios/Punto_B/Punto_B_FormatMontaje_manager.sh)  
+- [Punto_B_FormatMontaje_dev.sh](Ejercicios/Punto_B/Punto_B_FormatMontaje_dev.sh)  
 
-	tree ~/sysadmin
-	tree ~/manager
-	tree ~/dev
+**Evidencias:** [df_output_sysadmin.txt](Ejercicios/Punto_B/df_output_sysadmin.txt) | [df_output_manager.txt](Ejercicios/Punto_B/df_output_manager.txt) | [df_output_dev.txt](Ejercicios/Punto_B/df_output_dev.txt)
 
-### Parte grupal
+---
 
-Se creó la estructura colaborativa en /Continentes/, respetando la asignación de continente por rol:
+## Punto C — Usuarios y Grupos
 
-| Rol      | Continente |
-| -------- | ---------- |
-| Sysadmin | America    |
-| Manager  | Europa     |
-| Dev      | Asia       |
+Se ejecutó desde la VM del sysadmin. Crea los grupos g_sysadmin, g_manager, g_dev y g_infra, y los usuarios u_sysadmin, u_manager y u_dev con su grupo principal, grupo secundario g_infra, clave igual al nombre de usuario y shell /bin/bash.
 
+**Script:** [Punto_C.sh](Ejercicios/Punto_C/Punto_C.sh)  
+**Uso:** `sudo bash Punto_C.sh`  
+**Evidencia:** [id_output.txt](Ejercicios/Punto_C/id_output.txt)
 
-La estructura creada fue:
+---
 
-La estructura creada fue:
+## Punto D — Permisos
 
-```text
-/Continentes/
-├── America/
-│   ├── Mexico/
-│   │   └── CDMX/
-│   ├── Peru/
-│   │   ├── Cusco/
-│   │   └── Lima/
-│   └── Uruguay/
-│       ├── Colonia/
-│       ├── Montevideo/
-│       └── Salto/
-├── Europa/
-│   ├── España/
-│   │   ├── Barcelona/
-│   │   ├── Madrid/
-│   │   └── Toledo/
-│   ├── Francia/
-│   │   └── Marsella/
-│   └── Italia/
-│       ├── Napoles/
-│       └── Turin/
-└── Asia/
-    ├── China/
-    │   ├── Beijing/
-    │   ├── Shanghai/
-    │   └── Shenzhen/
-    ├── Japon/
-    │   ├── Osaka/
-    │   └── Tokyo/
-    └── Tailandia/
-        └── Bangkok/
-```
+Se ajustaron los permisos de la estructura del Punto A para cada rol usando notación octal en Servicios y notación simbólica en Monitoreo.
 
-El script correspondiente se encuentra en:
+**Scripts:** [Ejercicios/Punto_D/](Ejercicios/Punto_D/)  
+- [Punto_D_sysadmin.sh](Ejercicios/Punto_D/Punto_D_sysadmin.sh)  
+- [Punto_D_manager.sh](Ejercicios/Punto_D/Punto_D_manager.sh)  
+- [Punto_D_dev.sh](Ejercicios/Punto_D/Punto_D_dev.sh)  
 
-`Punto_A/Grupal/Punto_A_Grupal.sh`
+**Evidencias:** [permisos_output_sysadmin.txt](Ejercicios/Punto_D/permisos_output_sysadmin.txt) | [permisos_output_manager.txt](Ejercicios/Punto_D/permisos_output_manager.txt) | [permisos_output_dev.txt](Ejercicios/Punto_D/permisos_output_dev.txt)
 
-Validación utilizada:
+---
 
-`tree -a /Continentes`
+## Punto E — Filtros Básicos
 
+Se usó `awk` para filtrar información específica de `/proc/meminfo` y `/proc/cpuinfo`.
 
-Se utilizaron archivos .gitkeep en los directorios hoja para evitar que quedaran directorios vacíos sin archivo asociado.
-
-
-El flujo de trabajo se realizó respetando el orden colaborativo indicado en la consigna:
-
-Sysadmin creó la estructura base del Punto A, su parte individual y el continente America.
-Manager realizó pull/clone del repositorio, agregó su parte individual y el continente Europa.
-Dev realizó pull/clone del repositorio, agregó su parte individual y el continente Asia.
-
-Los commits del repositorio permiten identificar claramente qué cambios realizó cada rol.
+**Script:** [Punto_E.sh](Ejercicios/Punto_E/Punto_E.sh)  
+**Uso:** `bash Punto_E.sh`  
+**Evidencia:** [Filtro_basico.txt](Ejercicios/Punto_E/Filtro_basico.txt)
