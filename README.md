@@ -141,7 +141,7 @@ Se usó `awk` para filtrar información específica de `/proc/meminfo` y `/proc/
 
 ## Punto F - Docker Compose (opcional)
 
-Se desplegó un sitio WordPress usando Docker Compose con dos servicios conectados a la red interna `red_utn`.
+Se desplegó un sitio WordPress usando Docker Compose. Para levantarlo ejecutar `docker-compose up -d` desde la carpeta `Ejercicios/Punto_F/`.
 
 | Servicio | Imagen | Puerto |
 |----------|--------|--------|
@@ -149,5 +149,4 @@ Se desplegó un sitio WordPress usando Docker Compose con dos servicios conectad
 | db | mariadb | interno |
 
 **Archivo:** [docker-compose.yml](Ejercicios/Punto_F/docker-compose.yml)  
-**Evidencia:** [docker_output.txt](Ejercicios/Punto_F/docker_output.txt) | [wordpress.png](Ejercicios/Punto_F/wordpress.png)  
-**Levantar:** `docker-compose up -d` desde `Ejercicios/Punto_F/`
+**Evidencia:** [docker_output.txt](Ejercicios/Punto_F/docker_output.txt) | [wordpress.png](Ejercicios/Punto_F/wordpress.png)
